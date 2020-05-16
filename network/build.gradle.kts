@@ -35,6 +35,7 @@ dependencies {
     Depends.processorDaggerArray.forEach { kapt(it) }
     Depends.okHttpArray.forEach { implementation(it) }
     Depends.retrofitArray.forEach { implementation(it) }
+    Depends.rxArray.forEach { implementation(it) }
 
     Depends.kotlinArray.forEach { implementation(it) }
     Depends.supportArray.forEach { implementation(it) }
