@@ -23,9 +23,6 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-
             buildConfigField("String", "BASE_URL", "\"https://gateway.marvel.com:443/\"")
             buildConfigField("String", "SUBSCRIPTION_KEY", "\"1234\"")
         }
