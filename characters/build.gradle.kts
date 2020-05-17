@@ -37,6 +37,7 @@ dependencies {
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }
     Depends.rxArray.forEach { implementation(it) }
+    Depends.navigationArray.forEach { implementation(it) }
 
     Depends.kotlinArray.forEach { implementation(it) }
     Depends.supportArray.forEach { implementation(it) }

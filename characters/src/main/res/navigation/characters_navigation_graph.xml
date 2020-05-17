@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/characters_navigation_graph"
+    app:startDestination="@id/characters">
+
+    <fragment
+        android:id="@+id/characters"
+        android:label="fragment_characters"
+        android:name="br.com.marvel.characters.list.presentation.CharacterListFragment">
+        <action
+            android:id="@+id/action_character_to_favorite"
+            app:destination="@+id/favorite"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/favorite"
+        android:label="fragment_favorite"
+        android:name="br.com.marvel.characters.favorites.presentation.CharacterFavoriteFragment"/>
+
+</navigation>

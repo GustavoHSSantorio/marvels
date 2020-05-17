@@ -153,6 +153,11 @@ object Depends {
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation_version}"
     }
 
+    val navigationArray = arrayOf(
+        Navigation.navigationFragment,
+        Navigation.navigationUi
+    )
+
     val firebaseArray = arrayOf(
             Firebase.core,
             Firebase.crashalytics,
