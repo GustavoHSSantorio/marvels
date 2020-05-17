@@ -1,3 +1,11 @@
+plugins {
+    id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
+}
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+}
+
 buildscript {
     repositories {
         google()
