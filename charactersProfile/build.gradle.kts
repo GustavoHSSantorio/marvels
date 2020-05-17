@@ -6,10 +6,6 @@ plugins {
 }
 
 android {
-    dataBinding {
-        isEnabled = true
-    }
-
     compileSdkVersion(Versions.compileSdkVersion)
     buildToolsVersion(Versions.buildToolsVersion)
 
@@ -23,13 +19,6 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
     }
 }
 

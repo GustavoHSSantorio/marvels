@@ -1,5 +1,6 @@
 package br.com.marvel.base
 
+import android.os.Bundle
 import br.com.marvel.di.DaggerViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject

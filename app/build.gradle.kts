@@ -6,6 +6,10 @@ plugins {
 }
 
 android {
+    dataBinding {
+        isEnabled = true
+    }
+
     compileSdkVersion(Versions.compileSdkVersion)
     buildToolsVersion(Versions.buildToolsVersion)
 
@@ -35,7 +39,10 @@ android {
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
     implementation(project(Depends.Module.di))
+    implementation(project(Depends.Module.base))
     implementation(project(Depends.Module.network))
     implementation(project(Depends.Module.resources))
     implementation(project(Depends.Module.characters))

@@ -23,9 +23,6 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-
             buildConfigField("String", "BASE_URL", "\"https://gateway.marvel.com:443/\"")
             buildConfigField("String", "SUBSCRIPTION_KEY", "\"1234\"")
         }
@@ -38,6 +35,7 @@ dependencies {
     Depends.processorDaggerArray.forEach { kapt(it) }
     Depends.okHttpArray.forEach { implementation(it) }
     Depends.retrofitArray.forEach { implementation(it) }
+    Depends.rxArray.forEach { implementation(it) }
 
     Depends.kotlinArray.forEach { implementation(it) }
     Depends.supportArray.forEach { implementation(it) }
