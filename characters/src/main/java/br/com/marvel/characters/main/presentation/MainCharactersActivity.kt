@@ -12,7 +12,7 @@ class MainCharactersActivity : BaseActivity() {
 
     private val vm by appViewModel<MainCharactersViewModel>()
 
-    private lateinit var binding : ActivityMainCharactersBinding
+    private lateinit var binding: ActivityMainCharactersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class MainCharactersActivity : BaseActivity() {
         setupNavigation()
     }
 
-    private fun setupNavigation(){
+    private fun setupNavigation() {
         val navHostFragment = (supportFragmentManager.findFragmentById(R.id.navHosFragment) as NavHostFragment)
         NavigationUI.setupWithNavController(binding.bottomNavigation, navHostFragment.navController)
     }

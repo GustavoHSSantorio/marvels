@@ -7,9 +7,9 @@ interface ThemeHelper {
     fun applyTheme(theme: ThemeHelperImp.Theme)
 }
 
-class ThemeHelperImp @Inject constructor() : ThemeHelper{
+class ThemeHelperImp @Inject constructor() : ThemeHelper {
 
-    enum class Theme{
+    enum class Theme {
         LightMode,
         DarkMode,
         BatterySaverMode,

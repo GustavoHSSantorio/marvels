@@ -13,6 +13,5 @@ abstract class MainCharactersModule {
     @Binds
     @IntoMap
     @ViewModelKey(MainCharactersViewModel::class)
-    abstract fun bindMainCharactersViewModel(viewModel : MainCharactersViewModel): ViewModel
-
+    abstract fun bindMainCharactersViewModel(viewModel: MainCharactersViewModel): ViewModel
 }

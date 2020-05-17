@@ -11,5 +11,5 @@ abstract class ThemeHelperModule {
 
     @Binds
     @Singleton
-    abstract fun bindThemeHelper(helper: ThemeHelperImp) : ThemeHelper
+    abstract fun bindThemeHelper(helper: ThemeHelperImp): ThemeHelper
 }
