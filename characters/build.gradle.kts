@@ -24,19 +24,20 @@ android {
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    implementation(project(Depends.Module.base))
+    implementation(project(Depends.Module.di))
+    implementation(project(Depends.Module.resources))
+    implementation(project(Depends.Module.network))
 
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }
+    Depends.rxArray.forEach { implementation(it) }
+    Depends.navigationArray.forEach { implementation(it) }
 
     Depends.kotlinArray.forEach { implementation(it) }
     Depends.supportArray.forEach { implementation(it) }
