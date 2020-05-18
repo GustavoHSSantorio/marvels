@@ -7,6 +7,7 @@ import androidx.navigation.ui.NavigationUI
 import br.com.marvel.base.BaseActivity
 import br.com.marvel.characters.R
 import br.com.marvel.characters.databinding.ActivityMainCharactersBinding
+import br.com.marvel.dayNight.presentation.DayNightBottomSheetDialog
 
 class MainCharactersActivity : BaseActivity() {
 
@@ -21,6 +22,9 @@ class MainCharactersActivity : BaseActivity() {
         binding.vm = vm
 
         setupNavigation()
+        binding.button.setOnClickListener{ _ ->
+            DayNightBottomSheetDialog().show(supportFragmentManager,"")
+        }
     }
 
     private fun setupNavigation() {

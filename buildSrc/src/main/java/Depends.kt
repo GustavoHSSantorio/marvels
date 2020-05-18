@@ -8,6 +8,7 @@ object Depends {
         const val resources = ":resources"
         const val characters = ":characters"
         const val charactersProfile = ":charactersProfile"
+        const val dayNight = ":dayNight"
     }
 
     object Android {
