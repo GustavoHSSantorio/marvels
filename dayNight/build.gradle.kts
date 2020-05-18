@@ -27,18 +27,13 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-
-    implementation(project(Depends.Module.base))
     implementation(project(Depends.Module.di))
+    implementation(project(Depends.Module.base))
     implementation(project(Depends.Module.resources))
-    implementation(project(Depends.Module.network))
-    implementation(project(Depends.Module.dayNight))
 
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }
-    Depends.rxArray.forEach { implementation(it) }
-    Depends.navigationArray.forEach { implementation(it) }
+    Depends.viewModelArray.forEach { implementation(it) }
 
     Depends.kotlinArray.forEach { implementation(it) }
     Depends.supportArray.forEach { implementation(it) }

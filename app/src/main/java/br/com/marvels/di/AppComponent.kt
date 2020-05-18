@@ -19,6 +19,7 @@ import javax.inject.Singleton
     ActivityBuilderModule::class,
     ViewModelFactoryModule::class,
     ContextModule::class,
+    SharedPreferencesModule::class,
     ResourcesModule::class,
     ThemeHelperModule::class,
     NetworkModule::class])

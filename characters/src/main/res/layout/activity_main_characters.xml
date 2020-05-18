@@ -12,6 +12,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@android:drawable/ic_menu_edit"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <fragment
             android:id="@+id/navHosFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -19,7 +36,7 @@
             android:layout_height="0dp"
             app:defaultNavHost="true"
             app:navGraph="@navigation/characters_navigation_graph"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/containerHeader"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
