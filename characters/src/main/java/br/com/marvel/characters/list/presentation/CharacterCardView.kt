@@ -12,8 +12,10 @@ import br.com.marvel.characters.R
 import kotlinx.android.synthetic.main.card_image.view.*
 
 class CharacterCardView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr){
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : CardView(context, attrs, defStyleAttr) {
 
     init {
         LayoutInflater.from(context).inflate(R.layout.card_image, this)

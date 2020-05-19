@@ -41,7 +41,7 @@ data class MarvelImage(
 
     val path: String? = null,
     val extension: String? = null,
-    val fullUri : String? = "${path}.${extension}"
+    val fullUri: String? = "$path.$extension"
 
 )
 

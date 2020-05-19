@@ -100,8 +100,8 @@ class NetworkModule {
 }
 
 @Module
-abstract class InnerNetworkModule{
+abstract class InnerNetworkModule {
     @Singleton
     @Binds
-    abstract fun providesHashGenerattor(hashGenerate: HashGenerateImp) : HashGenerate
+    abstract fun providesHashGenerattor(hashGenerate: HashGenerateImp): HashGenerate
 }

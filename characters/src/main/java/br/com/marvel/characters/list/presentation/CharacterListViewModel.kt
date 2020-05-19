@@ -9,16 +9,17 @@ import br.com.marvel.network.model.MarvelCharacter
 import io.reactivex.Scheduler
 import javax.inject.Inject
 
-enum class CharacterListState{
+enum class CharacterListState {
     ShowSuccessView,
     ShowErrorView,
     ShowLoading,
     RemoveLoading
 }
 
-class CharacterListViewModel @Inject constructor(private val interactor: CharacterListInteractor,
-                                                 @MainScheduler private val mainScheduler: Scheduler,
-                                                 @IOScheduler private val ioScheduler: Scheduler
+class CharacterListViewModel @Inject constructor(
+    private val interactor: CharacterListInteractor,
+    @MainScheduler private val mainScheduler: Scheduler,
+    @IOScheduler private val ioScheduler: Scheduler
 ) : BaseViewModel() {
 
     val charactersLiveData = MutableLiveData<List<MarvelCharacter>>()
@@ -29,11 +30,11 @@ class CharacterListViewModel @Inject constructor(private val interactor: Charact
         getCharacters()
     }
 
-    fun retry(){
+    fun retry() {
         getCharacters()
     }
 
-    private fun getCharacters(){
+    private fun getCharacters() {
         compositeDisposable.add(
             interactor.getCharacters()
                 .observeOn(mainScheduler)
@@ -49,7 +50,7 @@ class CharacterListViewModel @Inject constructor(private val interactor: Charact
                 }
                 .subscribe({
                     charactersLiveData.value = it
-                },{
+                }, {
                     it.printStackTrace()
                     stateLiveData.value = CharacterListState.ShowErrorView
                 })

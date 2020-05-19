@@ -1,14 +1,15 @@
 package br.com.marvel.network
 
-import okhttp3.Interceptor
-import okhttp3.Response
-import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import okhttp3.Interceptor
+import okhttp3.Response
 
-class SubscriptionKeyInterceptor @Inject constructor(@SubscriptionKey private val subscriptionKey: String,
-                                                     @PrivateKey private val privateKey: String,
-                                                     private val hashGenerate: HashGenerate) : Interceptor {
+class SubscriptionKeyInterceptor @Inject constructor(
+    @SubscriptionKey private val subscriptionKey: String,
+    @PrivateKey private val privateKey: String,
+    private val hashGenerate: HashGenerate
+) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val timeStamp = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
@@ -23,7 +24,7 @@ class SubscriptionKeyInterceptor @Inject constructor(@SubscriptionKey private va
         return chain.proceed(request)
     }
 
-    companion object{
+    companion object {
         const val API_PARAMETER = "apikey"
         const val HASH_PARAMETER = "hash"
         const val TS_PARAMETER = "ts"

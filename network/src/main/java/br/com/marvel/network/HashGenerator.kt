@@ -5,7 +5,7 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import javax.inject.Inject
 
-interface HashGenerate{
+interface HashGenerate {
     fun generate(timestamp: Long, privateKey: String, publicKey: String): String
 }
 
@@ -15,7 +15,7 @@ interface HashGenerate{
  *
  *    thanks to Rodrigo Vianna
  */
-class HashGenerateImp @Inject constructor() : HashGenerate{
+class HashGenerateImp @Inject constructor() : HashGenerate {
 
     override fun generate(timestamp: Long, privateKey: String, publicKey: String): String {
         try {

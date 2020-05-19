@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import java.lang.Exception
 
-class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : RecyclerView.Adapter<CharacterListViewHolder>(){
+class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : RecyclerView.Adapter<CharacterListViewHolder>() {
 
     var list: List<MarvelCharacter> = list
         set(value) {
@@ -40,7 +40,7 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
         holder.card.title = character.name
         holder.card.content = character.description
 
-        Picasso.get().load(character.thumbnail?.fullUri).into(object : Target{
+        Picasso.get().load(character.thumbnail?.fullUri).into(object : Target {
             override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
                 holder.card.imageDrawable = placeHolderDrawable
             }
@@ -56,5 +56,4 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
     }
 }
 
-class CharacterListViewHolder(val card : CharacterCardView) : RecyclerView.ViewHolder(card)
-
+class CharacterListViewHolder(val card: CharacterCardView) : RecyclerView.ViewHolder(card)

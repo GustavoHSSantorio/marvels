@@ -38,9 +38,9 @@ class CharacterListFragment : BaseFragment() {
             CharacterListAdapter()
     }
 
-    private fun setupObservers(){
+    private fun setupObservers() {
         vm.stateLiveData.observe(this, Observer {
-            when(it){
+            when (it) {
                 CharacterListState.ShowSuccessView -> {
                     binding.viewFlipper.displayedChild = 0
                 }
