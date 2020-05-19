@@ -1,7 +1,10 @@
 package br.com.marvel.comicData.data.model
 
-import br.com.marvel.network.model.*
-
+import br.com.marvel.network.model.BaseModelMarvelContainer
+import br.com.marvel.network.model.BaseModelMarvelWrapper
+import br.com.marvel.network.model.MarvelComic
+import br.com.marvel.network.model.MarvelSeries
+import br.com.marvel.network.model.MarvelStory
 
 data class MarvelComicDataWrapper(
     val data: MarvelComicDataContainer? = null

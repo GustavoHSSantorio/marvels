@@ -5,9 +5,9 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 interface ComicRepository {
-    fun getComicsList(limit :Int = 20, offset : Int = 0) : Single<MarvelComicDataContainer>
-    fun getComicsTitleStartsWith(limit :Int = 20, startsWith : String = "") : Single<MarvelComicDataContainer>
-    fun getComic(id : Int) : Single<MarvelComicDataContainer>
+    fun getComicsList(limit: Int = 20, offset: Int = 0): Single<MarvelComicDataContainer>
+    fun getComicsTitleStartsWith(limit: Int = 20, startsWith: String = ""): Single<MarvelComicDataContainer>
+    fun getComic(id: Int): Single<MarvelComicDataContainer>
 }
 
 class ComicRepositoryImp @Inject constructor(private val service: ComicService) :
@@ -38,5 +38,4 @@ class ComicRepositoryImp @Inject constructor(private val service: ComicService) 
             .map {
                 it.data
             }
-
 }

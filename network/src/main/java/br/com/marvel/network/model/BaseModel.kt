@@ -49,7 +49,6 @@ data class MarvelUrl(
     val url: String? = null
 )
 
-
 data class MarvelStoryList(
     val items: ArrayList<MarvelStorySummary>? = null
 ) : BaseModelMarvelList()
@@ -100,7 +99,6 @@ data class MarvelStory(
 
     val resourceURI: String? = null
 ) : BaseModelMarvel()
-
 
 data class MarvelComic(
     val pageCount: Int? = null,

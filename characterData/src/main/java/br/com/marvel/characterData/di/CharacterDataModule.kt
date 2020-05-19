@@ -12,7 +12,7 @@ import retrofit2.Retrofit
 abstract class CharacterDataModule {
 
     @Binds
-    abstract fun bindCharacterRepository(repositoryImp: CharacterRepositoryImp) : CharacterRepository
+    abstract fun bindCharacterRepository(repositoryImp: CharacterRepositoryImp): CharacterRepository
 
     @Module
     companion object {
@@ -21,5 +21,4 @@ abstract class CharacterDataModule {
         fun provideService(retrofit: Retrofit): CharacterService =
             retrofit.create(CharacterService::class.java)
     }
-
 }

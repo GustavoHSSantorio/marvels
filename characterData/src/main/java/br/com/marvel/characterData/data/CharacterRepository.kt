@@ -5,12 +5,12 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 interface CharacterRepository {
-    fun getCharacterList(limit :Int = 20, offset : Int = 0) : Single<MarvelCharacterDataContainer>
-    fun getCharacterNameStartsWith(limit :Int = 20, startsWith : String = "") : Single<MarvelCharacterDataContainer>
-    fun getCharacter(id : Int) : Single<MarvelCharacterDataContainer>
+    fun getCharacterList(limit: Int = 20, offset: Int = 0): Single<MarvelCharacterDataContainer>
+    fun getCharacterNameStartsWith(limit: Int = 20, startsWith: String = ""): Single<MarvelCharacterDataContainer>
+    fun getCharacter(id: Int): Single<MarvelCharacterDataContainer>
 }
 
-class CharacterRepositoryImp @Inject constructor(private val service : CharacterService) :
+class CharacterRepositoryImp @Inject constructor(private val service: CharacterService) :
     CharacterRepository {
 
     override fun getCharacterList(
@@ -39,4 +39,3 @@ class CharacterRepositoryImp @Inject constructor(private val service : Character
                 it.data
             }
 }
-

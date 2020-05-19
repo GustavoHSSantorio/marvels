@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 @Module
 abstract class ComicDataModule {
     @Binds
-    abstract fun bindCharacterRepository(repositoryImp: ComicRepositoryImp) : ComicRepository
+    abstract fun bindCharacterRepository(repositoryImp: ComicRepositoryImp): ComicRepository
 
     @Module
     companion object {
