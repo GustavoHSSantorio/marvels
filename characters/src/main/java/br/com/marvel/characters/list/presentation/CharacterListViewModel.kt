@@ -22,8 +22,10 @@ class CharacterListViewModel @Inject constructor(
     @IOScheduler private val ioScheduler: Scheduler
 ) : BaseViewModel() {
 
-    val charactersLiveData = MutableLiveData<List<MarvelCharacter>>()
+    val charactersLiveData = MutableLiveData<MutableList<MarvelCharacter>>().apply { value = mutableListOf() }
     val stateLiveData = MutableLiveData<CharacterListState>()
+
+    private var offset = 0
 
     override fun onCreate() {
         super.onCreate()
@@ -34,13 +36,23 @@ class CharacterListViewModel @Inject constructor(
         getCharacters()
     }
 
+    fun onLastItemVisible(lastItemVisible: Int) {
+        charactersLiveData.value?.size
+            ?.takeIf {lastItemVisible == it - 1}
+            ?.run {
+                offset += DEFAULT_LIMIT
+                getCharacters()
+            }
+    }
+
     private fun getCharacters() {
         compositeDisposable.add(
-            interactor.getCharacters()
+            interactor.getCharacters(limit= DEFAULT_LIMIT, offset= offset)
                 .observeOn(mainScheduler)
                 .subscribeOn(ioScheduler)
                 .doOnSubscribe {
-                    stateLiveData.value = CharacterListState.ShowLoading
+                    if(charactersLiveData.value.isNullOrEmpty())
+                        stateLiveData.value = CharacterListState.ShowLoading
                 }
                 .doFinally {
                     stateLiveData.value = CharacterListState.RemoveLoading
@@ -49,11 +61,17 @@ class CharacterListViewModel @Inject constructor(
                     stateLiveData.value = CharacterListState.ShowSuccessView
                 }
                 .subscribe({
-                    charactersLiveData.value = it
+                    charactersLiveData.value = charactersLiveData.value!!.apply {
+                        addAll(it)
+                    }
                 }, {
                     it.printStackTrace()
                     stateLiveData.value = CharacterListState.ShowErrorView
                 })
         )
+    }
+
+    companion object{
+        private const val DEFAULT_LIMIT = 20
     }
 }

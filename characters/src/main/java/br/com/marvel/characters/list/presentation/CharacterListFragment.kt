@@ -4,11 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.marvel.base.BaseFragment
 import br.com.marvel.characters.R
 import br.com.marvel.characters.databinding.FragmentCharacterListBinding
+
 
 class CharacterListFragment : BaseFragment() {
 
@@ -34,8 +38,7 @@ class CharacterListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.adapter =
-            CharacterListAdapter()
+        setupRecyclerView()
     }
 
     private fun setupObservers() {
@@ -59,6 +62,25 @@ class CharacterListFragment : BaseFragment() {
         })
         vm.charactersLiveData.observe(this, Observer {
             (binding.recyclerView.adapter as CharacterListAdapter).list = it
+        })
+    }
+
+    private fun setupRecyclerView(){
+        binding.recyclerView.adapter =
+            CharacterListAdapter()
+
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(
+                @NonNull recyclerView: RecyclerView,
+                dx: Int,
+                dy: Int
+            ) {
+                super.onScrolled(recyclerView, dx, dy)
+                val linearLayoutManager = recyclerView.layoutManager
+                if(linearLayoutManager is LinearLayoutManager)
+                    vm.onLastItemVisible(linearLayoutManager.findLastVisibleItemPosition())
+
+            }
         })
     }
 }
