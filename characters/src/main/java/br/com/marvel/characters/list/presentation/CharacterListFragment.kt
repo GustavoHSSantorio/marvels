@@ -13,7 +13,6 @@ import br.com.marvel.base.BaseFragment
 import br.com.marvel.characters.R
 import br.com.marvel.characters.databinding.FragmentCharacterListBinding
 
-
 class CharacterListFragment : BaseFragment() {
 
     private val vm by appViewModel<CharacterListViewModel>()
@@ -65,7 +64,7 @@ class CharacterListFragment : BaseFragment() {
         })
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         binding.recyclerView.adapter =
             CharacterListAdapter()
 
@@ -77,9 +76,8 @@ class CharacterListFragment : BaseFragment() {
             ) {
                 super.onScrolled(recyclerView, dx, dy)
                 val linearLayoutManager = recyclerView.layoutManager
-                if(linearLayoutManager is LinearLayoutManager)
+                if (linearLayoutManager is LinearLayoutManager)
                     vm.onLastItemVisible(linearLayoutManager.findLastVisibleItemPosition())
-
             }
         })
     }

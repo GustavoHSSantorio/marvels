@@ -38,7 +38,7 @@ class CharacterListViewModel @Inject constructor(
 
     fun onLastItemVisible(lastItemVisible: Int) {
         charactersLiveData.value?.size
-            ?.takeIf {lastItemVisible == it - 1}
+            ?.takeIf { lastItemVisible == it - 1 }
             ?.run {
                 offset += DEFAULT_LIMIT
                 getCharacters()
@@ -47,11 +47,11 @@ class CharacterListViewModel @Inject constructor(
 
     private fun getCharacters() {
         compositeDisposable.add(
-            interactor.getCharacters(limit= DEFAULT_LIMIT, offset= offset)
+            interactor.getCharacters(limit = DEFAULT_LIMIT, offset = offset)
                 .observeOn(mainScheduler)
                 .subscribeOn(ioScheduler)
                 .doOnSubscribe {
-                    if(charactersLiveData.value.isNullOrEmpty())
+                    if (charactersLiveData.value.isNullOrEmpty())
                         stateLiveData.value = CharacterListState.ShowLoading
                 }
                 .doFinally {
@@ -71,7 +71,7 @@ class CharacterListViewModel @Inject constructor(
         )
     }
 
-    companion object{
+    companion object {
         private const val DEFAULT_LIMIT = 20
     }
 }
