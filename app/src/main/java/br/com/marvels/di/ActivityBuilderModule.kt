@@ -1,5 +1,6 @@
 package br.com.marvels.di
 
+import br.com.marvel.characters.list.di.CharacterListModuleBuilder
 import br.com.marvel.characters.main.di.MainCharactersModule
 import br.com.marvel.characters.main.presentation.MainCharactersActivity
 import br.com.marvel.dayNight.di.DayNightModuleBuilder
@@ -11,6 +12,9 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilderModule {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [MainCharactersModule::class, DayNightModuleBuilder::class])
+    @ContributesAndroidInjector(modules = [
+        MainCharactersModule::class,
+        DayNightModuleBuilder::class,
+        CharacterListModuleBuilder::class])
     abstract fun bindMainCharacterActivity(): MainCharactersActivity
 }
