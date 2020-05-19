@@ -1,6 +1,6 @@
-package br.com.marvel.characters.data.character
+package br.com.marvel.characterData.data
 
-import br.com.marvel.characters.data.model.MarvelCharacterDataContainer
+import br.com.marvel.characterData.data.model.MarvelCharacterDataContainer
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -8,10 +8,10 @@ interface CharacterRepository {
     fun getCharacterList(limit :Int = 20, offset : Int = 0) : Single<MarvelCharacterDataContainer>
     fun getCharacterNameStartsWith(limit :Int = 20, startsWith : String = "") : Single<MarvelCharacterDataContainer>
     fun getCharacter(id : Int) : Single<MarvelCharacterDataContainer>
-
 }
 
-class CharacterRepositoryImp @Inject constructor(private val service : CharacterService) : CharacterRepository{
+class CharacterRepositoryImp @Inject constructor(private val service : CharacterService) :
+    CharacterRepository {
 
     override fun getCharacterList(
         limit: Int,

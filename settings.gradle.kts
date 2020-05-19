@@ -1,1 +1,1 @@
-include(":app", ":di", ":base", ":network", ":resources", ":characters", ":charactersProfile", ":dayNight")
+include(":app", ":di", ":base", ":network", ":resources", ":characters", ":charactersProfile", ":dayNight", ":characterData", ":comicData")

@@ -1,6 +1,6 @@
-package br.com.marvel.characters.data.character
+package br.com.marvel.characterData.data
 
-import br.com.marvel.characters.data.model.MarvelCharacterDataWrapper
+import br.com.marvel.characterData.data.model.MarvelCharacterDataWrapper
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

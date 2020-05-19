@@ -1,6 +1,6 @@
-package br.com.marvel.characters.data.comic
+package br.com.marvel.comicData.data
 
-import br.com.marvel.characters.data.model.MarvelComicDataContainer
+import br.com.marvel.comicData.data.model.MarvelComicDataContainer
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -10,7 +10,8 @@ interface ComicRepository {
     fun getComic(id : Int) : Single<MarvelComicDataContainer>
 }
 
-class ComicRepositoryImp @Inject constructor(private val service: ComicService) : ComicRepository{
+class ComicRepositoryImp @Inject constructor(private val service: ComicService) :
+    ComicRepository {
 
     override fun getComicsList(
         limit: Int,
