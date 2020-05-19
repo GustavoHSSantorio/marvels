@@ -4,9 +4,19 @@
     <style name="CharactersTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
+
+        <item name="bottomNavigationStyle">@style/CharactersBottomNavigation</item>
+
     </style>
 
+    <style name="CharactersBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemStrokeWidth">@android:color/transparent</item>
+    </style>
 </resources>

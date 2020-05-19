@@ -10,17 +10,17 @@ data class MarvelComicDataWrapper(
     val data: MarvelComicDataContainer? = null
 ) : BaseModelMarvelWrapper()
 
-data class MarvelComicDataContainer(val results: ArrayList<MarvelComic>? = null) : BaseModelMarvelContainer()
+data class MarvelComicDataContainer(val results: List<MarvelComic>? = null) : BaseModelMarvelContainer()
 
 data class MarvelSeriesContainer(
-    val results: ArrayList<MarvelSeries>? = null
+    val results: List<MarvelSeries>? = null
 ) : BaseModelMarvelContainer()
 
 data class MarvelSeriesDataWrapper(
     val data: MarvelSeriesContainer? = null
 ) : BaseModelMarvelWrapper()
 
-data class MarvelStoryDataContainer(val results: ArrayList<MarvelStory>? = null) : BaseModelMarvelContainer()
+data class MarvelStoryDataContainer(val results: List<MarvelStory>? = null) : BaseModelMarvelContainer()
 
 data class MarvelStoryDataWrapper(
     val data: MarvelStoryDataContainer? = null

@@ -4,7 +4,7 @@ open class BaseModelMarvel {
     var id: Int? = null
     var name: String? = null
     var description: String? = null
-    var thumbMail: MarvelImage? = null
+    var thumbnail: MarvelImage? = null
     var title: String? = null
 }
 
@@ -40,8 +40,9 @@ open class BaseModelMarvelWrapper {
 data class MarvelImage(
 
     val path: String? = null,
+    val extension: String? = null,
+    val fullUri : String? = "${path}.${extension}"
 
-    val extension: String? = null
 )
 
 data class MarvelUrl(
@@ -50,7 +51,7 @@ data class MarvelUrl(
 )
 
 data class MarvelStoryList(
-    val items: ArrayList<MarvelStorySummary>? = null
+    val items: List<MarvelStorySummary>? = null
 ) : BaseModelMarvelList()
 
 data class MarvelStorySummary(
@@ -70,11 +71,11 @@ class MarvelComicSummary : BaseModelMarvelSummary()
 class MarvelSeriesSummary : BaseModelMarvelSummary()
 
 data class MarvelComicList(
-    val items: ArrayList<MarvelComicSummary>? = null
+    val items: List<MarvelComicSummary>? = null
 ) : BaseModelMarvelList()
 
 data class MarvelSeriesList(
-    val items: ArrayList<MarvelSeriesSummary>? = null
+    val items: List<MarvelSeriesSummary>? = null
 ) : BaseModelMarvelList()
 
 data class MarvelSeries(
@@ -84,7 +85,7 @@ data class MarvelSeries(
 ) : BaseModelMarvel()
 
 data class MarvelCharacterList(
-    val items: ArrayList<MarvelCharacterSummary>? = null
+    val items: List<MarvelCharacterSummary>? = null
 ) : BaseModelMarvelList()
 
 data class MarvelComicPrice(
@@ -102,28 +103,22 @@ data class MarvelStory(
 
 data class MarvelComic(
     val pageCount: Int? = null,
-    val urls: ArrayList<MarvelUrl>? = null,
-    val collections: ArrayList<MarvelComicSummary>? = null,
-    val images: ArrayList<MarvelImage>? = null,
+    val urls: List<MarvelUrl>? = null,
+    val collections: List<MarvelComicSummary>? = null,
+    val images: List<MarvelImage>? = null,
     val characters: MarvelCharacterList? = null,
     val stories: MarvelStoryList? = null,
-    val prices: ArrayList<MarvelComicPrice>? = null,
-    val textObjects: ArrayList<MarvelTextObjects>? = null,
-    var charactersList: ArrayList<MarvelCharacter>? = null,
-    var storiesList: ArrayList<MarvelStory>? = null
+    val prices: List<MarvelComicPrice>? = null,
+    val textObjects: List<MarvelTextObjects>? = null,
+    var charactersList: List<MarvelCharacter>? = null,
+    var storiesList: List<MarvelStory>? = null
 ) : BaseModelMarvel()
 
-class MarvelCharacter : BaseModelMarvel {
-
-    constructor() : super()
-    constructor(id: Int) : super() {
-        this.id = id
-    }
-
-    val urls: ArrayList<MarvelUrl>? = null
+class MarvelCharacter : BaseModelMarvel() {
+    val urls: List<MarvelUrl>? = null
     var comics: MarvelComicList? = null
     val stories: MarvelStoryList? = null
     val series: MarvelSeriesList? = null
-    var comicList: ArrayList<MarvelComic>? = null
-    var seriesList: ArrayList<MarvelSeries>? = null
+    var comicList: List<MarvelComic>? = null
+    var seriesList: List<MarvelSeries>? = null
 }

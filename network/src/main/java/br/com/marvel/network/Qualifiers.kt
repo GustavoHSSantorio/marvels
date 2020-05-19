@@ -12,6 +12,10 @@ annotation class SubscriptionKey
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
+annotation class PrivateKey
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
 annotation class LoggingInterceptor
 
 @Qualifier

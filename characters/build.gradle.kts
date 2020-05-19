@@ -37,6 +37,7 @@ dependencies {
     implementation(project(Depends.Module.characterData))
     implementation(project(Depends.Module.comicData))
 
+    implementation(Depends.Picasso.picasso)
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }
     Depends.rxArray.forEach { implementation(it) }
