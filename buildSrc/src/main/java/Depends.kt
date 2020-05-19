@@ -9,6 +9,8 @@ object Depends {
         const val characters = ":characters"
         const val charactersProfile = ":charactersProfile"
         const val dayNight = ":dayNight"
+        const val characterData = ":characterData"
+        const val comicData = ":comicData"
     }
 
     object Android {

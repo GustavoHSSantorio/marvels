@@ -34,11 +34,15 @@ dependencies {
     implementation(project(Depends.Module.resources))
     implementation(project(Depends.Module.network))
     implementation(project(Depends.Module.dayNight))
+    implementation(project(Depends.Module.characterData))
+    implementation(project(Depends.Module.comicData))
 
+    implementation(Depends.Picasso.picasso)
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }
     Depends.rxArray.forEach { implementation(it) }
     Depends.navigationArray.forEach { implementation(it) }
+    Depends.retrofitArray.forEach { implementation(it) }
 
     Depends.kotlinArray.forEach { implementation(it) }
     Depends.supportArray.forEach { implementation(it) }

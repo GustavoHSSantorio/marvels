@@ -2,4 +2,5 @@
 <resources>
     <string name="characters_label_characters">Personagems</string>
     <string name="characters_label_favorite">Favoritos</string>
+    <string name="character_list_error_message">Estamos com problemas para carregar os personagens. Clique para tentar novamente</string>
 </resources>

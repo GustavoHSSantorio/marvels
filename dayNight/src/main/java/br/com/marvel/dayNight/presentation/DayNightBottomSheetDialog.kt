@@ -16,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class DayNightBottomSheetDialog : BaseDialogFragment() {
 
     private val vm by appViewModel<DayNightViewModel>()
-    private lateinit var binding : FragmentDayNightBinding
+    private lateinit var binding: FragmentDayNightBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return BottomSheetDialog(this.context!!)
@@ -42,15 +42,15 @@ class DayNightBottomSheetDialog : BaseDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO improve to TwoWayDataBinding
+        // TODO improve to TwoWayDataBinding
         binding.themeGroup.setOnCheckedChangeListener { _, checkedId ->
             vm.onThemeSelected(checkedId)
         }
     }
 
-    private fun setupObservers(){
+    private fun setupObservers() {
         vm.selectCheck.observe(this, Observer {
-            when(it){
+            when (it) {
                 SelectedCheck.SelectThemeLight -> {
                     binding.themeLight.isChecked = true
                 }

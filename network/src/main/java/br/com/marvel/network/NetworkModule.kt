@@ -4,6 +4,7 @@ import android.app.Application
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -20,9 +21,8 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-@Module
+@Module(includes = [InnerNetworkModule::class])
 class NetworkModule {
-
     @Provides
     @IOScheduler
     fun provideIOScheduler(): Scheduler = Schedulers.io()
@@ -34,12 +34,17 @@ class NetworkModule {
     @Singleton
     @Provides
     @BaseUrl
-    fun provideBaseUrl(): String = /*BuildConfig.BASE_URL*/ ""
+    fun provideBaseUrl(): String = NetworkConstants.baseUrl
 
     @Singleton
     @Provides
     @SubscriptionKey
-    fun provideSubscriptionKey(): String = /*BuildConfig.SUBSCRIPTION_KEY*/ ""
+    fun provideSubscriptionKey(): String = NetworkConstants.publicKey
+
+    @Singleton
+    @Provides
+    @PrivateKey
+    fun providePrivateKey(): String = NetworkConstants.privateKey
 
     @Singleton
     @Provides
@@ -65,9 +70,10 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesOkHttp(@LoggingInterceptor loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+    fun providesOkHttp(@LoggingInterceptor loggingInterceptor: HttpLoggingInterceptor, subscriptionKeyInterceptor: SubscriptionKeyInterceptor): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(subscriptionKeyInterceptor)
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
             .build()
@@ -91,4 +97,11 @@ class NetworkModule {
             override fun convert(value: ResponseBody) = if (value.contentLength() != 0L) nextResponseBodyConverter.convert(value) else null
         }
     }
+}
+
+@Module
+abstract class InnerNetworkModule {
+    @Singleton
+    @Binds
+    abstract fun providesHashGenerattor(hashGenerate: HashGenerateImp): HashGenerate
 }

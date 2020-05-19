@@ -48,6 +48,8 @@ dependencies {
     implementation(project(Depends.Module.characters))
     implementation(project(Depends.Module.charactersProfile))
     implementation(project(Depends.Module.dayNight))
+    implementation(project(Depends.Module.characterData))
+    implementation(project(Depends.Module.comicData))
 
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }
