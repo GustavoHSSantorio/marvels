@@ -1,11 +1,8 @@
 package br.com.marvel.characters.list.domain
 
-import br.com.marvel.characters.list.data.CharacterListRepository
+import br.com.marvel.characters.data.character.CharacterRepository
 import javax.inject.Inject
 
-interface CharacterListInteractor {
-}
+interface CharacterListInteractor
 
-class CharacterListInteractorImp @Inject constructor(private val characterListRepository: CharacterListRepository) : CharacterListInteractor {
-
-}
+class CharacterListInteractorImp @Inject constructor(private val repository: CharacterRepository) : CharacterListInteractor

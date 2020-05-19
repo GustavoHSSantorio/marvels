@@ -1,7 +1,6 @@
 package br.com.marvel.characters.list.di
 
 import androidx.lifecycle.ViewModel
-import br.com.marvel.base.BaseViewModel
 import br.com.marvel.characters.list.data.CharacterListRepository
 import br.com.marvel.characters.list.data.CharacterListRepositoryImp
 import br.com.marvel.characters.list.data.CharacterListService
@@ -18,28 +17,27 @@ import dagger.multibindings.IntoMap
 import retrofit2.Retrofit
 
 @Module
-abstract class CharacterListModuleBuilder{
+abstract class CharacterListModuleBuilder {
     @ContributesAndroidInjector(modules = [CharacterListModule::class])
-    abstract fun bindsCharacterListFragment() : CharacterListFragment
+    abstract fun bindsCharacterListFragment(): CharacterListFragment
 }
 
 @Module
 abstract class CharacterListModule {
 
     @Binds
-    abstract fun bindCharacterListRepository(repositoryImp: CharacterListRepositoryImp) : CharacterListRepository
+    abstract fun bindCharacterListRepository(repositoryImp: CharacterListRepositoryImp): CharacterListRepository
 
     @Binds
-    abstract fun bindCharacterListInteractor(interactor: CharacterListInteractorImp) : CharacterListInteractor
+    abstract fun bindCharacterListInteractor(interactor: CharacterListInteractorImp): CharacterListInteractor
 
     @Binds
     @IntoMap
     @ViewModelKey(CharacterListViewModel::class)
-    abstract fun bindsCharacterListViewModel(characterListViewModel: CharacterListViewModel) : ViewModel
-
+    abstract fun bindsCharacterListViewModel(characterListViewModel: CharacterListViewModel): ViewModel
 
     @Module
-    companion object{
+    companion object {
         @JvmStatic
         @Provides
         fun provideService(retrofit: Retrofit): CharacterListService =

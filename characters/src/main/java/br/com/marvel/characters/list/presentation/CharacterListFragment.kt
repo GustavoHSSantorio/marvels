@@ -11,9 +11,8 @@ import br.com.marvel.characters.databinding.FragmentCharacterListBinding
 
 class CharacterListFragment : BaseFragment() {
 
-
     private val vm by appViewModel<CharacterListViewModel>()
-    private lateinit var binding : FragmentCharacterListBinding
+    private lateinit var binding: FragmentCharacterListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

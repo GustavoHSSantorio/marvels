@@ -6,10 +6,10 @@ import javax.inject.Inject
 
 interface DayNightInteractor {
     fun changeTheme(mode: ThemeHelper.Theme)
-    fun getSelectedTheme() : Int
+    fun getSelectedTheme(): Int
 }
 
-class DayNightInteractorImp @Inject constructor(private val themeHelper: ThemeHelper, private val sharedPreferences: SharedPreferences): DayNightInteractor{
+class DayNightInteractorImp @Inject constructor(private val themeHelper: ThemeHelper, private val sharedPreferences: SharedPreferences) : DayNightInteractor {
 
     override fun changeTheme(mode: ThemeHelper.Theme) {
         sharedPreferences.edit().putInt(THEME, mode.id).apply()

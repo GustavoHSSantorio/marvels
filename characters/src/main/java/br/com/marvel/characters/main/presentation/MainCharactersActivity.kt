@@ -22,8 +22,8 @@ class MainCharactersActivity : BaseActivity() {
         binding.vm = vm
 
         setupNavigation()
-        binding.button.setOnClickListener{ _ ->
-            DayNightBottomSheetDialog().show(supportFragmentManager,"")
+        binding.button.setOnClickListener { _ ->
+            DayNightBottomSheetDialog().show(supportFragmentManager, "")
         }
     }
 

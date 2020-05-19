@@ -6,7 +6,7 @@ import javax.inject.Inject
 interface ThemeHelper {
     fun applyTheme(theme: Theme)
 
-    enum class Theme(val id : Int) {
+    enum class Theme(val id: Int) {
         LightMode(1),
         DarkMode(2),
         BatterySaverMode(3),

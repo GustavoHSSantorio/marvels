@@ -1,4 +1,4 @@
-package br.com.marvel.characters.list.data.model
+package br.com.marvel.characters.data.model
 
 open class BaseModelMarvel {
     var id: Int? = null
@@ -38,74 +38,88 @@ open class BaseModelMarvelWrapper {
 }
 
 data class MarvelCharacterDataContainer(
-     var results: ArrayList<MarvelCharacter>? = null) : BaseModelMarvelContainer()
+    var results: ArrayList<MarvelCharacter>? = null
+) : BaseModelMarvelContainer()
 
 data class MarvelCharacterDataWrapper(var data: MarvelCharacterDataContainer? = null) : BaseModelMarvelWrapper()
 
 data class MarvelCharacterList(
-                               val items: ArrayList<MarvelCharacterSummary>? = null) : BaseModelMarvelList()
-
+    val items: ArrayList<MarvelCharacterSummary>? = null
+) : BaseModelMarvelList()
 
 data class MarvelComicDataWrapper(
-                                  val data: MarvelComicDataContainer? = null) : BaseModelMarvelWrapper()
+    val data: MarvelComicDataContainer? = null
+) : BaseModelMarvelWrapper()
 
 data class MarvelComicList(
-                           val items: ArrayList<MarvelComicSummary>? = null) : BaseModelMarvelList()
+    val items: ArrayList<MarvelComicSummary>? = null
+) : BaseModelMarvelList()
 
 data class MarvelComicDataContainer(val results: ArrayList<MarvelComic>? = null) : BaseModelMarvelContainer()
 
 data class MarvelComicPrice(
-                            val type: String? = null,
+    val type: String? = null,
 
-                            val price: Float? = null)
+    val price: Float? = null
+)
 
 data class MarvelImage(
 
     val path: String? = null,
 
-    val extension: String? = null) {
-}
+    val extension: String? = null
+)
 
 data class MarvelSeries(
-                        val endYear: Int? = null,
+    val endYear: Int? = null,
 
-                        val startYear: Int? = null) : BaseModelMarvel()
+    val startYear: Int? = null
+) : BaseModelMarvel()
 
 data class MarvelSeriesContainer(
-                                 val results: ArrayList<MarvelSeries>? = null) : BaseModelMarvelContainer()
+    val results: ArrayList<MarvelSeries>? = null
+) : BaseModelMarvelContainer()
 
 data class MarvelSeriesDataWrapper(
-                                   val data: MarvelSeriesContainer? = null) : BaseModelMarvelWrapper()
-
+    val data: MarvelSeriesContainer? = null
+) : BaseModelMarvelWrapper()
 
 data class MarvelSeriesList(
-                            val items: ArrayList<MarvelSeriesSummary>? = null) : BaseModelMarvelList()
+    val items: ArrayList<MarvelSeriesSummary>? = null
+) : BaseModelMarvelList()
 
 data class MarvelStory(
-                       val type: String? = null,
+    val type: String? = null,
 
-                       val resourceURI: String? = null) : BaseModelMarvel()
+    val resourceURI: String? = null
+) : BaseModelMarvel()
 
 data class MarvelStoryDataContainer(val results: ArrayList<MarvelStory>? = null) : BaseModelMarvelContainer()
 
 data class MarvelStoryDataWrapper(
-                                  val data: MarvelStoryDataContainer? = null) : BaseModelMarvelWrapper()
+    val data: MarvelStoryDataContainer? = null
+) : BaseModelMarvelWrapper()
 
 data class MarvelStoryList(
-                           val items: ArrayList<MarvelStorySummary>? = null) : BaseModelMarvelList()
+    val items: ArrayList<MarvelStorySummary>? = null
+) : BaseModelMarvelList()
 
 data class MarvelStorySummary(
-                              val type: String? = null)
+    val type: String? = null
+)
 
 data class MarvelTextObjects(
-                             val type: String? = null,
+    val type: String? = null,
 
-                             val text: String? = null,
+    val text: String? = null,
 
-                             val language: String? = null)
+    val language: String? = null
+)
 
-data class MarvelUrl(val type: String? = null,
-                     val url: String? = null)
+data class MarvelUrl(
+    val type: String? = null,
+    val url: String? = null
+)
 
 class MarvelComicSummary : BaseModelMarvelSummary()
 
