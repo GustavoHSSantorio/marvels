@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 interface CharacterRepository {
     fun getCharacterList(limit: Int = 20, offset: Int = 0): Single<MarvelCharacterDataContainer>
-    fun getCharacterNameStartsWith(limit: Int = 20, startsWith: String = ""): Single<MarvelCharacterDataContainer>
+    fun getCharacterNameStartsWith(limit: Int = 20, offset: Int = 0, startsWith: String = ""): Single<MarvelCharacterDataContainer>
     fun getCharacter(id: Int): Single<MarvelCharacterDataContainer>
 }
 
@@ -24,9 +24,10 @@ class CharacterRepositoryImp @Inject constructor(private val service: CharacterS
 
     override fun getCharacterNameStartsWith(
         limit: Int,
+        offset: Int,
         startsWith: String
     ): Single<MarvelCharacterDataContainer> =
-        service.getCharactersBeginLetter(limit, startsWith)
+        service.getCharactersBeginLetter(limit, offset, startsWith)
             .map {
                 it.data
             }

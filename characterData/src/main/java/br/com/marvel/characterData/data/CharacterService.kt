@@ -12,7 +12,7 @@ interface CharacterService {
     fun getCharacters(@Query("limit") limit: Int, @Query("offset") offset: Int): Single<MarvelCharacterDataWrapper>
 
     @GET("v1/public/characters")
-    fun getCharactersBeginLetter(@Query("limit") limit: Int, @Query("nameStartsWith") letter: String): Single<MarvelCharacterDataWrapper>
+    fun getCharactersBeginLetter(@Query("limit") limit: Int, @Query("offset") offset: Int, @Query("nameStartsWith") letter: String): Single<MarvelCharacterDataWrapper>
 
     @GET("/v1/public/characters/{characterId}")
     fun getCharacter(@Path("characterId") characterId: Int?): Single<MarvelCharacterDataWrapper>
