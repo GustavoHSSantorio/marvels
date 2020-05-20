@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 interface ComicRepository {
     fun getComicsList(limit: Int = 20, offset: Int = 0): Single<MarvelComicDataContainer>
-    fun getComicsTitleStartsWith(limit: Int = 20, startsWith: String = ""): Single<MarvelComicDataContainer>
+    fun getComicsTitleStartsWith(limit: Int = 20, offset: Int = 0, startsWith: String = ""): Single<MarvelComicDataContainer>
     fun getComic(id: Int): Single<MarvelComicDataContainer>
 }
 
@@ -24,9 +24,10 @@ class ComicRepositoryImp @Inject constructor(private val service: ComicService) 
 
     override fun getComicsTitleStartsWith(
         limit: Int,
+        offset: Int,
         startsWith: String
     ): Single<MarvelComicDataContainer> =
-        service.getComicsBeginLetter(limit, startsWith)
+        service.getComicsBeginLetter(limit, offset, startsWith)
             .map {
                 it.data
             }

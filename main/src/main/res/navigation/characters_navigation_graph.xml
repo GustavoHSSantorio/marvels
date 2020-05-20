@@ -17,6 +17,16 @@
     <fragment
         android:id="@+id/favorite"
         android:label="fragment_favorite"
-        android:name="br.com.marvel.characters.favorites.presentation.CharacterFavoriteFragment"/>
+        android:name="br.com.marvel.characters.favorites.presentation.CharacterFavoriteFragment">
+        <action
+            android:id="@+id/action_favorite_to_comics"
+            app:destination="@+id/comics"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/comics"
+        android:label="fragment_comics"
+        android:name="br.com.marvel.comics.presentation.ComicsListFragment"/>
 
 </navigation>

@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.marvel.characters.R
+import br.com.marvel.components.MarvelCardView
 import br.com.marvel.network.model.MarvelCharacter
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
@@ -20,7 +21,7 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListViewHolder =
         CharacterListViewHolder(
-            CharacterCardView(
+            MarvelCardView(
                 parent.context
             ).apply {
                 val marginLP = ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
@@ -56,4 +57,4 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
     }
 }
 
-class CharacterListViewHolder(val card: CharacterCardView) : RecyclerView.ViewHolder(card)
+class CharacterListViewHolder(val card: MarvelCardView) : RecyclerView.ViewHolder(card)

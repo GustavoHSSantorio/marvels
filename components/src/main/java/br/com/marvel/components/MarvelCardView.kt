@@ -1,4 +1,4 @@
-package br.com.marvel.characters.list.presentation
+package br.com.marvel.components
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,10 +8,9 @@ import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.cardview.widget.CardView
-import br.com.marvel.characters.R
 import kotlinx.android.synthetic.main.card_image.view.*
 
-class CharacterCardView @JvmOverloads constructor(
+class MarvelCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

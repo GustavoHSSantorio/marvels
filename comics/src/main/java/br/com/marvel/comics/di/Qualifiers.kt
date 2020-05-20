@@ -1,11 +1,11 @@
-package br.com.marvel.characters.main.di
+package br.com.marvel.comics.di
 
 import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class TextSearchPublisher
+annotation class ComicTextSearchPublisher
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class SearchCanceledPublisher
+annotation class ComicSearchCanceledPublisher
