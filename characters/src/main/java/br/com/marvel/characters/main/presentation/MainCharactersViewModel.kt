@@ -1,11 +1,23 @@
 package br.com.marvel.characters.main.presentation
 
 import br.com.marvel.base.BaseViewModel
-import br.com.marvel.network.MainScheduler
-import io.reactivex.Scheduler
+import br.com.marvel.characters.main.di.SearchCanceledPublisher
+import br.com.marvel.characters.main.di.TextSearchPublisher
+import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 class MainCharactersViewModel @Inject constructor(
-    @MainScheduler private val mainScheduler: Scheduler,
-    @MainScheduler private val ioScheduler: Scheduler
-) : BaseViewModel()
+    @TextSearchPublisher private val publisherText: PublishSubject<String>,
+    @SearchCanceledPublisher private val publisherCanceled: PublishSubject<Unit>
+) : BaseViewModel() {
+
+    fun onTextSubmit(query: String?) {
+        query?.let {
+            publisherText.onNext(it)
+        }
+    }
+
+    fun onSearchCanceled() {
+        publisherCanceled.onNext(Unit)
+    }
+}

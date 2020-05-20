@@ -6,6 +6,7 @@ import br.com.marvel.characters.list.domain.CharacterListInteractor
 import br.com.marvel.characters.list.domain.CharacterListInteractorImp
 import br.com.marvel.characters.list.presentation.CharacterListFragment
 import br.com.marvel.characters.list.presentation.CharacterListViewModel
+import br.com.marvel.di.FragmentScope
 import br.com.marvel.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
@@ -14,6 +15,7 @@ import dagger.multibindings.IntoMap
 
 @Module
 abstract class CharacterListModuleBuilder {
+    @FragmentScope
     @ContributesAndroidInjector(modules = [CharacterListModule::class, CharacterDataModule::class])
     abstract fun bindsCharacterListFragment(): CharacterListFragment
 }

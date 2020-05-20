@@ -3,10 +3,13 @@ package br.com.marvel.characters.list.presentation
 import androidx.lifecycle.MutableLiveData
 import br.com.marvel.base.BaseViewModel
 import br.com.marvel.characters.list.domain.CharacterListInteractor
+import br.com.marvel.characters.main.di.SearchCanceledPublisher
+import br.com.marvel.characters.main.di.TextSearchPublisher
 import br.com.marvel.network.IOScheduler
 import br.com.marvel.network.MainScheduler
 import br.com.marvel.network.model.MarvelCharacter
 import io.reactivex.Scheduler
+import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 enum class CharacterListState {
@@ -19,16 +22,20 @@ enum class CharacterListState {
 class CharacterListViewModel @Inject constructor(
     private val interactor: CharacterListInteractor,
     @MainScheduler private val mainScheduler: Scheduler,
-    @IOScheduler private val ioScheduler: Scheduler
+    @IOScheduler private val ioScheduler: Scheduler,
+    @TextSearchPublisher private val publisher: PublishSubject<String>,
+    @SearchCanceledPublisher private val publisherCanceled: PublishSubject<Unit>
 ) : BaseViewModel() {
 
     val charactersLiveData = MutableLiveData<MutableList<MarvelCharacter>>().apply { value = mutableListOf() }
     val stateLiveData = MutableLiveData<CharacterListState>()
 
     private var offset = 0
+    private var name: String? = null
 
     override fun onCreate() {
         super.onCreate()
+        subscribeSearch()
         getCharacters()
     }
 
@@ -45,9 +52,29 @@ class CharacterListViewModel @Inject constructor(
             }
     }
 
+    private fun subscribeSearch() {
+        compositeDisposable.add(
+            publisher.subscribe({
+                name = it
+                offset = 0
+                charactersLiveData.value = mutableListOf()
+                getCharacters()
+            }, { it.printStackTrace() }))
+
+        compositeDisposable.add(
+            publisherCanceled.subscribe({
+                name = null
+                offset = 0
+                charactersLiveData.value = mutableListOf()
+                getCharacters()
+            }, {
+                it.printStackTrace()
+            }))
+    }
+
     private fun getCharacters() {
         compositeDisposable.add(
-            interactor.getCharacters(limit = DEFAULT_LIMIT, offset = offset)
+            interactor.getCharacters(name = name, limit = DEFAULT_LIMIT, offset = offset)
                 .observeOn(mainScheduler)
                 .subscribeOn(ioScheduler)
                 .doOnSubscribe {
