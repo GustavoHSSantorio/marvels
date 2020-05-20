@@ -5,9 +5,9 @@ import br.com.marvel.characters.list.di.CharactersSearchCanceledPublisher
 import br.com.marvel.characters.list.di.CharactersTextSearchPublisher
 import br.com.marvel.comics.di.ComicSearchCanceledPublisher
 import br.com.marvel.comics.di.ComicTextSearchPublisher
-import br.com.marvel.main.presentation.MainCharactersViewModel
 import br.com.marvel.di.ActivityScope
 import br.com.marvel.di.ViewModelKey
+import br.com.marvel.main.presentation.MainCharactersViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

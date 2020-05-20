@@ -9,7 +9,7 @@ import br.com.marvel.components.MarvelCardView
 import br.com.marvel.network.model.MarvelComic
 import com.squareup.picasso.Picasso
 
-class ComicListAdapter (list: List<MarvelComic> = emptyList()) : RecyclerView.Adapter<ComicListViewHolder>() {
+class ComicListAdapter(list: List<MarvelComic> = emptyList()) : RecyclerView.Adapter<ComicListViewHolder>() {
 
     var list: List<MarvelComic> = list
         set(value) {
@@ -46,7 +46,6 @@ class ComicListAdapter (list: List<MarvelComic> = emptyList()) : RecyclerView.Ad
 
         holder.card.title = comic.title
         holder.card.content = comic.description
-
 
         Picasso.get().load(comic.thumbnail?.fullUri).into(object : com.squareup.picasso.Target {
             override fun onPrepareLoad(placeHolderDrawable: Drawable?) {

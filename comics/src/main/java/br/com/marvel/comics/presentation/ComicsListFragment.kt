@@ -17,7 +17,7 @@ class ComicsListFragment : BaseFragment() {
 
     private val vm by appViewModel<ComicListViewModel>()
 
-    private lateinit var binding : FragmentComicListBinding
+    private lateinit var binding: FragmentComicListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

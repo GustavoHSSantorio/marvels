@@ -9,7 +9,7 @@ interface ComicListInteractor {
     fun getComics(name: String?, limit: Int, offset: Int): Single<List<MarvelComic>>
 }
 
-class ComicListInteractorImp @Inject constructor(private val repository : ComicRepository) : ComicListInteractor{
+class ComicListInteractorImp @Inject constructor(private val repository: ComicRepository) : ComicListInteractor {
     override fun getComics(name: String?, limit: Int, offset: Int): Single<List<MarvelComic>> =
         (name?.let {
             repository.getComicsTitleStartsWith(limit, offset, it)

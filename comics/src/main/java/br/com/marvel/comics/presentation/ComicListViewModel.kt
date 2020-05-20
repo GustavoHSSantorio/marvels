@@ -101,5 +101,4 @@ class ComicListViewModel @Inject constructor(
     companion object {
         private const val DEFAULT_LIMIT = 20
     }
-
 }

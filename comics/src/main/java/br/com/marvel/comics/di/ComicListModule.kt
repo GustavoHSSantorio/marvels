@@ -13,12 +13,11 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
-
 @Module
-abstract class ComicListModuleBuilder{
+abstract class ComicListModuleBuilder {
     @FragmentScope
     @ContributesAndroidInjector(modules = [ComicListModule::class, ComicDataModule::class])
-    abstract fun bindComicListFragment() : ComicsListFragment
+    abstract fun bindComicListFragment(): ComicsListFragment
 }
 
 @Module
