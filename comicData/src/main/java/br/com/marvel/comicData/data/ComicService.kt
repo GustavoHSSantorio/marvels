@@ -13,7 +13,7 @@ interface ComicService {
     fun getComics(@Query("limit") limit: Int, @Query("offset") offset: Int): Single<MarvelComicDataWrapper>
 
     @GET("v1/public/comics")
-    fun getComicsBeginLetter(@Query("limit") limit: Int, @Query("titleStartsWith") titleStartsWith: String): Single<MarvelComicDataWrapper>
+    fun getComicsBeginLetter(@Query("limit") limit: Int, @Query("offset") offset: Int, @Query("titleStartsWith") titleStartsWith: String): Single<MarvelComicDataWrapper>
 
     @GET("/v1/public/comics/{comicId}")
     fun getComic(@Path("comicId") characterId: Int?): Single<MarvelComicDataWrapper>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="comic_list_error_message">Não foi possível carregar os quadrinhos. Toque no icone para tentar novamente</string>
+</resources>

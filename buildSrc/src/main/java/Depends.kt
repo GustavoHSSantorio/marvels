@@ -11,6 +11,9 @@ object Depends {
         const val dayNight = ":dayNight"
         const val characterData = ":characterData"
         const val comicData = ":comicData"
+        const val comics = ":comics"
+        const val main = ":main"
+        const val components = ":components"
     }
 
     object Android {

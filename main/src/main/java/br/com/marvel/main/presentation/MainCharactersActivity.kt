@@ -1,4 +1,4 @@
-package br.com.marvel.characters.main.presentation
+package br.com.marvel.main.presentation
 
 import android.os.Bundle
 import android.view.Menu
@@ -8,9 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import br.com.marvel.base.BaseActivity
-import br.com.marvel.characters.R
-import br.com.marvel.characters.databinding.ActivityMainCharactersBinding
 import br.com.marvel.dayNight.presentation.DayNightBottomSheetDialog
+import br.com.marvel.main.R
+import br.com.marvel.main.databinding.ActivityMainCharactersBinding
 
 class MainCharactersActivity : BaseActivity() {
 

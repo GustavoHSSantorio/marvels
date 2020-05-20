@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="br.com.marvel.characters.main.presentation.MainCharactersViewModel" />
+            type="br.com.marvel.main.presentation.MainCharactersViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
