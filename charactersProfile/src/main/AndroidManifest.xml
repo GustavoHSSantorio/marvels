@@ -1,2 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.marvel.characters.profile" />
+    package="br.com.marvel.characters.profile" >
+
+
+    <application>
+
+        <activity
+            android:name="br.com.marvel.charactersProfile.presentation.CharactersProfileActivity"
+            android:label="@string/title_activity_characters_profile"
+            android:configChanges="uiMode"
+            android:theme="@style/CharactersTheme"/>
+
+    </application>
+</manifest>

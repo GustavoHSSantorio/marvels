@@ -16,7 +16,4 @@ interface CharacterService {
 
     @GET("/v1/public/characters/{characterId}")
     fun getCharacter(@Path("characterId") characterId: Int?): Single<MarvelCharacterDataWrapper>
-
-    @GET
-    fun getGenericCharacter(@Url url: String): Single<MarvelCharacterDataWrapper>
 }

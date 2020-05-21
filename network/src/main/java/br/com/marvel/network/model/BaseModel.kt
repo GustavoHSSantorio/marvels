@@ -1,5 +1,7 @@
 package br.com.marvel.network.model
 
+import java.util.*
+
 open class BaseModelMarvel {
     var id: Int? = null
     var name: String? = null

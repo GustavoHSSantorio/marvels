@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.marvel.base.BaseFragment
 import br.com.marvel.characters.R
 import br.com.marvel.characters.databinding.FragmentCharacterListBinding
+import br.com.marvel.charactersProfile.presentation.CharactersProfileActivity
 
 class CharacterListFragment : BaseFragment() {
 
@@ -67,6 +68,12 @@ class CharacterListFragment : BaseFragment() {
     private fun setupRecyclerView() {
         binding.recyclerView.adapter =
             CharacterListAdapter()
+
+        (binding.recyclerView.adapter as CharacterListAdapter).clickListener = object : CharacterClickListener{
+            override fun onCharacterClicked(characterId: Int?) {
+                startActivity(CharactersProfileActivity.newInstance(requireContext(), characterId))
+            }
+        }
 
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(

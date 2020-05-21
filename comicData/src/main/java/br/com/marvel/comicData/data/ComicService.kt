@@ -18,9 +18,10 @@ interface ComicService {
     @GET("/v1/public/comics/{comicId}")
     fun getComic(@Path("comicId") characterId: Int?): Single<MarvelComicDataWrapper>
 
-    @GET
-    fun getGenericComic(@Url url: String): Single<MarvelComicDataWrapper>
+    @GET("/v1/public/characters/{characterId}/comics")
+    fun getCharacterComics(@Path("characterId") characterId: Int?): Single<MarvelComicDataWrapper>
 
-    @GET
-    fun getGenericSeries(@Url url: String): Single<MarvelSeriesDataWrapper>
+    @GET("/v1/public/characters/{characterId}/series")
+    fun getCharacterSeries(@Path("characterId") characterId: Int?): Single<MarvelSeriesDataWrapper>
+
 }
