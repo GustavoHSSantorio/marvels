@@ -37,6 +37,7 @@ dependencies {
     implementation(project(Depends.Module.characterData))
     implementation(project(Depends.Module.comicData))
     implementation(project(Depends.Module.components))
+    implementation(project(Depends.Module.charactersProfile))
 
     implementation(Depends.Picasso.picasso)
     Depends.daggerArray.forEach { implementation(it) }

@@ -17,7 +17,7 @@
         android:theme="@style/CharactersTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="br.com.marvel.main.presentation.MainCharactersActivity"
+            android:name="br.com.marvel.main.presentation.MainActivity"
             android:label="@string/title_activity_main"
             android:configChanges="uiMode"
             android:theme="@style/CharactersTheme">

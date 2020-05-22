@@ -12,7 +12,7 @@ import br.com.marvel.dayNight.presentation.DayNightBottomSheetDialog
 import br.com.marvel.main.R
 import br.com.marvel.main.databinding.ActivityMainCharactersBinding
 
-class MainCharactersActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
 
     private val vm by appViewModel<MainCharactersViewModel>()
 

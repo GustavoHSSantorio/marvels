@@ -19,6 +19,8 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
             notifyDataSetChanged()
         }
 
+    var clickListener: CharacterClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListViewHolder =
         CharacterListViewHolder(
             MarvelCardView(
@@ -54,7 +56,14 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
                 holder.card.imageBitmap = bitmap
             }
         })
+
+        holder.card.setOnClickListener {
+            clickListener?.onCharacterClicked(character.id)
+        }
     }
 }
 
+interface CharacterClickListener {
+    fun onCharacterClicked(characterId: Int?)
+}
 class CharacterListViewHolder(val card: MarvelCardView) : RecyclerView.ViewHolder(card)

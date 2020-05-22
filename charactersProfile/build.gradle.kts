@@ -6,6 +6,10 @@ plugins {
 }
 
 android {
+    dataBinding {
+        isEnabled = true
+    }
+
     compileSdkVersion(Versions.compileSdkVersion)
     buildToolsVersion(Versions.buildToolsVersion)
 
@@ -23,9 +27,19 @@ android {
 }
 
 dependencies {
+    implementation(project(Depends.Module.base))
+    implementation(project(Depends.Module.di))
+    implementation(project(Depends.Module.network))
+    implementation(project(Depends.Module.resources))
+    implementation(project(Depends.Module.characterData))
+    implementation(project(Depends.Module.comicData))
+    implementation(project(Depends.Module.components))
 
-    Depends.daggerArray.forEach { implementation(it) }
+    implementation(Depends.Picasso.picasso)
     Depends.processorDaggerArray.forEach { kapt(it) }
+    Depends.daggerArray.forEach { implementation(it) }
+    Depends.rxArray.forEach { implementation(it) }
+    Depends.viewModelArray.forEach { implementation(it) }
 
     Depends.kotlinArray.forEach { implementation(it) }
     Depends.supportArray.forEach { implementation(it) }

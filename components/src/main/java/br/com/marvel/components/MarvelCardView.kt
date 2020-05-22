@@ -35,6 +35,10 @@ class MarvelCardView @JvmOverloads constructor(
         }
     }
 
+    override fun setOnClickListener(l: OnClickListener?) {
+        card_container.setOnClickListener(l)
+    }
+
     var title: String? = null
         set(value) {
             field = value
