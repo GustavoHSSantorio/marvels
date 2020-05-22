@@ -11,8 +11,8 @@ import javax.inject.Inject
 
 interface CharactersProfileInteractor {
     fun getCharacter() : Single<MarvelCharacter>
-    fun getCharacterComics() : Single<List<MarvelComic>>
-    fun getCharacterSeries() : Single<List<MarvelSeries>>
+    fun getCharacterComics(limit : Int = 20, offset : Int = 0) : Single<List<MarvelComic>>
+    fun getCharacterSeries(limit : Int = 20, offset : Int = 0) : Single<List<MarvelSeries>>
 }
 
 class CharactersProfileInteractorImp @Inject constructor(
@@ -26,14 +26,14 @@ class CharactersProfileInteractorImp @Inject constructor(
             it.results?.firstOrNull()
         }
 
-    override fun getCharacterComics(): Single<List<MarvelComic>> =
-        comicRepository.getCharacterComics(characterId ?: 0)
+    override fun getCharacterComics(limit : Int, offset : Int): Single<List<MarvelComic>> =
+        comicRepository.getCharacterComics(characterId ?: 0, limit, offset)
             .map {
                 it.results
             }
 
-    override fun getCharacterSeries(): Single<List<MarvelSeries>> =
-        comicRepository.getCharacterSeries(characterId ?: 0)
+    override fun getCharacterSeries(limit : Int, offset : Int): Single<List<MarvelSeries>> =
+        comicRepository.getCharacterSeries(characterId ?: 0, limit, offset)
             .map {
                 it.results
             }

@@ -9,8 +9,8 @@ interface ComicRepository {
     fun getComicsList(limit: Int = 20, offset: Int = 0): Single<MarvelComicDataContainer>
     fun getComicsTitleStartsWith(limit: Int = 20, offset: Int = 0, startsWith: String = ""): Single<MarvelComicDataContainer>
     fun getComic(id: Int): Single<MarvelComicDataContainer>
-    fun getCharacterComics(id: Int): Single<MarvelComicDataContainer>
-    fun getCharacterSeries(id: Int): Single<MarvelSeriesContainer>
+    fun getCharacterComics(id: Int, limit : Int = 20, offset : Int = 0): Single<MarvelComicDataContainer>
+    fun getCharacterSeries(id: Int, limit : Int = 20, offset : Int = 0): Single<MarvelSeriesContainer>
 }
 
 class ComicRepositoryImp @Inject constructor(private val service: ComicService) :
@@ -43,14 +43,22 @@ class ComicRepositoryImp @Inject constructor(private val service: ComicService) 
                 it.data
             }
 
-    override fun getCharacterComics(id: Int): Single<MarvelComicDataContainer> =
-        service.getCharacterComics(id)
+    override fun getCharacterComics(
+        id: Int,
+        limit: Int,
+        offset: Int
+    ): Single<MarvelComicDataContainer> =
+        service.getCharacterComics(id, limit, offset)
             .map {
                 it.data
             }
 
-    override fun getCharacterSeries(id: Int): Single<MarvelSeriesContainer> =
-        service.getCharacterSeries(id)
+    override fun getCharacterSeries(
+        id: Int,
+        limit: Int,
+        offset: Int
+    ): Single<MarvelSeriesContainer> =
+        service.getCharacterSeries(id, limit, offset)
             .map {
                 it.data
             }

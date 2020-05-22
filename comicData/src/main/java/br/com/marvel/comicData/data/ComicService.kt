@@ -19,9 +19,9 @@ interface ComicService {
     fun getComic(@Path("comicId") characterId: Int?): Single<MarvelComicDataWrapper>
 
     @GET("/v1/public/characters/{characterId}/comics")
-    fun getCharacterComics(@Path("characterId") characterId: Int?): Single<MarvelComicDataWrapper>
+    fun getCharacterComics(@Path("characterId") characterId: Int?, @Query("limit") limit: Int, @Query("offset") offset: Int): Single<MarvelComicDataWrapper>
 
     @GET("/v1/public/characters/{characterId}/series")
-    fun getCharacterSeries(@Path("characterId") characterId: Int?): Single<MarvelSeriesDataWrapper>
+    fun getCharacterSeries(@Path("characterId") characterId: Int?, @Query("limit") limit: Int, @Query("offset") offset: Int): Single<MarvelSeriesDataWrapper>
 
 }

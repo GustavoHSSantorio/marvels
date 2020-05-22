@@ -19,14 +19,35 @@ class CharactersProfileViewModel @Inject constructor(
 ) : BaseViewModel(){
 
     val characterLiveData = MutableLiveData<MarvelCharacter>()
-    val comicsLiveData = MutableLiveData<List<MarvelComic>>()
-    val seriesLiveData = MutableLiveData<List<MarvelSeries>>()
+    val comicsLiveData = MutableLiveData<MutableList<MarvelComic>>().apply { value = mutableListOf() }
+    val seriesLiveData = MutableLiveData<MutableList<MarvelSeries>>().apply { value = mutableListOf() }
+
+    private var seriesOffset = 0
+    private var comicsOffset = 0
 
     override fun onCreate() {
         super.onCreate()
         getCharacter()
         getComics()
         getSeries()
+    }
+
+    fun onComicsLastItemVisible(lastItemVisible: Int) {
+        comicsLiveData.value?.size
+            ?.takeIf { lastItemVisible == it - 1 }
+            ?.run {
+                comicsOffset += DEFAULT_LIMIT
+                getSeries()
+            }
+    }
+
+    fun onSeriesLastItemVisible(lastItemVisible: Int) {
+        seriesLiveData.value?.size
+            ?.takeIf { lastItemVisible == it - 1 }
+            ?.run {
+                seriesOffset += DEFAULT_LIMIT
+                getSeries()
+            }
     }
 
     private fun getCharacter(){
@@ -41,25 +62,32 @@ class CharactersProfileViewModel @Inject constructor(
     }
 
     private fun getComics(){
-        compositeDisposable.add(interactor.getCharacterComics()
+        compositeDisposable.add(interactor.getCharacterComics(DEFAULT_LIMIT, comicsOffset)
             .observeOn(mainScheduler)
             .subscribeOn(ioScheduler)
             .subscribe({
-                comicsLiveData.value = it
+                comicsLiveData.value = comicsLiveData.value!!.apply {
+                    addAll(it)
+                }
             }, {
                 it.printStackTrace()
             }))
     }
 
     private fun getSeries(){
-        compositeDisposable.add(interactor.getCharacterSeries()
+        compositeDisposable.add(interactor.getCharacterSeries(DEFAULT_LIMIT, seriesOffset)
             .observeOn(mainScheduler)
             .subscribeOn(ioScheduler)
             .subscribe({
-                seriesLiveData.value = it
+                seriesLiveData.value = seriesLiveData.value!!.apply {
+                    addAll(it)
+                }
             }, {
                 it.printStackTrace()
             }))
     }
 
+    companion object {
+        private const val DEFAULT_LIMIT = 20
+    }
 }

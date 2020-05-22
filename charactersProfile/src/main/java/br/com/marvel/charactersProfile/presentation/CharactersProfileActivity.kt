@@ -3,8 +3,11 @@ package br.com.marvel.charactersProfile.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.marvel.base.BaseActivity
 import br.com.marvel.characters.profile.R
 import br.com.marvel.characters.profile.databinding.ActivityCharactersProfileBinding
@@ -21,6 +24,7 @@ class CharactersProfileActivity : BaseActivity() {
         binding.lifecycleOwner = this
         binding.vm = vm
 
+        setupSeriesRecyclerView()
         setupObservers()
     }
 
@@ -30,7 +34,23 @@ class CharactersProfileActivity : BaseActivity() {
         })
 
         vm.seriesLiveData.observe(this, Observer {
+            (binding.recyclerViewSeries.adapter as SeriesListAdapter).list = it
+        })
+    }
 
+    private fun setupSeriesRecyclerView(){
+        binding.recyclerViewSeries.adapter = SeriesListAdapter()
+        binding.recyclerViewSeries.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(
+                @NonNull recyclerView: RecyclerView,
+                dx: Int,
+                dy: Int
+            ) {
+                super.onScrolled(recyclerView, dx, dy)
+                val linearLayoutManager = recyclerView.layoutManager
+                if (linearLayoutManager is LinearLayoutManager)
+                    vm.onSeriesLastItemVisible(linearLayoutManager.findLastVisibleItemPosition())
+            }
         })
     }
 

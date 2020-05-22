@@ -23,6 +23,7 @@ android {
 }
 
 dependencies {
+    implementation(project(Depends.Module.resources))
 
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }

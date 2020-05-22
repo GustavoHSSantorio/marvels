@@ -6,11 +6,14 @@
     <attr name="content" format="string"/>
     <attr name="imageSrc" format="reference"/>
 
-
     <declare-styleable name="CardImage">
         <attr name="title" />
         <attr name="subtitle" />
         <attr name="content" />
+        <attr name="imageSrc" />
+    </declare-styleable>
+
+    <declare-styleable name="Shortcut">
         <attr name="imageSrc" />
     </declare-styleable>
 </resources>
