@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    dataBinding{
+    dataBinding {
         isEnabled = true
     }
 

@@ -6,7 +6,6 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.Url
 
 interface ComicService {
     @GET("v1/public/comics")
@@ -23,5 +22,4 @@ interface ComicService {
 
     @GET("/v1/public/characters/{characterId}/series")
     fun getCharacterSeries(@Path("characterId") characterId: Int?, @Query("limit") limit: Int, @Query("offset") offset: Int): Single<MarvelSeriesDataWrapper>
-
 }

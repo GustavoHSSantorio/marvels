@@ -24,12 +24,11 @@ abstract class ActivityBuilderModule {
         ComicListModuleBuilder::class])
     abstract fun bindMainActivity(): MainActivity
 
-
     @ActivityScope
     @ContributesAndroidInjector(modules = [
         CharactersProfileModule::class,
         CharacterDataModule::class,
         ComicDataModule::class
     ])
-    abstract fun bindCharactersProfileActivity() : CharactersProfileActivity
+    abstract fun bindCharactersProfileActivity(): CharactersProfileActivity
 }

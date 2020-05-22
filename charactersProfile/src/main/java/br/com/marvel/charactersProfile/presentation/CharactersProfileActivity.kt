@@ -16,7 +16,7 @@ class CharactersProfileActivity : BaseActivity() {
 
     private val vm by appViewModel<CharactersProfileViewModel>()
 
-    private lateinit var binding : ActivityCharactersProfileBinding
+    private lateinit var binding: ActivityCharactersProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class CharactersProfileActivity : BaseActivity() {
         })
     }
 
-    private fun setupSeriesRecyclerView(){
+    private fun setupSeriesRecyclerView() {
         binding.recyclerViewSeries.adapter = SeriesListAdapter()
         binding.recyclerViewSeries.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(
@@ -55,7 +55,7 @@ class CharactersProfileActivity : BaseActivity() {
         })
     }
 
-    private fun setupComicsRecyclerView(){
+    private fun setupComicsRecyclerView() {
         binding.recyclerViewComics.adapter = ComicsListAdapter()
         binding.recyclerViewComics.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(
@@ -71,10 +71,10 @@ class CharactersProfileActivity : BaseActivity() {
         })
     }
 
-    companion object{
+    companion object {
         const val CHARACTER_ID_BUNDLE = "character_id"
 
-        fun newInstance(context: Context, characterId : Int?) = Intent(context, CharactersProfileActivity::class.java).apply {
+        fun newInstance(context: Context, characterId: Int?) = Intent(context, CharactersProfileActivity::class.java).apply {
             putExtra(CHARACTER_ID_BUNDLE, characterId)
         }
     }

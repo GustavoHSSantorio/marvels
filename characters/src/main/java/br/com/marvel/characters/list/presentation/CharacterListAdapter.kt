@@ -19,7 +19,7 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
             notifyDataSetChanged()
         }
 
-    var clickListener : CharacterClickListener? = null
+    var clickListener: CharacterClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListViewHolder =
         CharacterListViewHolder(
@@ -63,7 +63,7 @@ class CharacterListAdapter(list: List<MarvelCharacter> = emptyList()) : Recycler
     }
 }
 
-interface CharacterClickListener{
-    fun onCharacterClicked(characterId : Int?)
+interface CharacterClickListener {
+    fun onCharacterClicked(characterId: Int?)
 }
 class CharacterListViewHolder(val card: MarvelCardView) : RecyclerView.ViewHolder(card)

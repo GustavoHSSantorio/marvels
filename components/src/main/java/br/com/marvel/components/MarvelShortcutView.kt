@@ -9,9 +9,11 @@ import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.shortcut_image.view.*
 
-class MarvelShortcutView(context: Context,
-                         attrs: AttributeSet? = null,
-                         defStyleAttr: Int = 0) : CardView(context, attrs, defStyleAttr) {
+class MarvelShortcutView(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : CardView(context, attrs, defStyleAttr) {
 
     init {
         LayoutInflater.from(context).inflate(R.layout.shortcut_image, this)

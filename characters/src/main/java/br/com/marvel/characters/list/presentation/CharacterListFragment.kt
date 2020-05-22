@@ -69,7 +69,7 @@ class CharacterListFragment : BaseFragment() {
         binding.recyclerView.adapter =
             CharacterListAdapter()
 
-        (binding.recyclerView.adapter as CharacterListAdapter).clickListener = object : CharacterClickListener{
+        (binding.recyclerView.adapter as CharacterListAdapter).clickListener = object : CharacterClickListener {
             override fun onCharacterClicked(characterId: Int?) {
                 startActivity(CharactersProfileActivity.newInstance(requireContext(), characterId))
             }

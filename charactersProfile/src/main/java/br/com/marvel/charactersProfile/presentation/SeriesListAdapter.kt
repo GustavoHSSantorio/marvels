@@ -2,7 +2,6 @@ package br.com.marvel.charactersProfile.presentation
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.marvel.characters.profile.R
@@ -12,9 +11,9 @@ import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import java.lang.Exception
 
-class SeriesListAdapter(list : List<MarvelSeries> = emptyList()): RecyclerView.Adapter<SeriesListViewHolder>(){
+class SeriesListAdapter(list: List<MarvelSeries> = emptyList()) : RecyclerView.Adapter<SeriesListViewHolder>() {
 
-    var list : List<MarvelSeries> = list
+    var list: List<MarvelSeries> = list
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -53,6 +52,4 @@ class SeriesListAdapter(list : List<MarvelSeries> = emptyList()): RecyclerView.A
     }
 }
 
-
-
-class SeriesListViewHolder(val shortcut : MarvelShortcutView) : RecyclerView.ViewHolder(shortcut)
+class SeriesListViewHolder(val shortcut: MarvelShortcutView) : RecyclerView.ViewHolder(shortcut)

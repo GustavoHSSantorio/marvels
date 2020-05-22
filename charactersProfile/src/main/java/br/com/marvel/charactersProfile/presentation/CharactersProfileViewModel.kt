@@ -11,12 +11,11 @@ import br.com.marvel.network.model.MarvelSeries
 import io.reactivex.Scheduler
 import javax.inject.Inject
 
-
 class CharactersProfileViewModel @Inject constructor(
     @MainScheduler private val mainScheduler: Scheduler,
     @IOScheduler private val ioScheduler: Scheduler,
-    private val interactor : CharactersProfileInteractor
-) : BaseViewModel(){
+    private val interactor: CharactersProfileInteractor
+) : BaseViewModel() {
 
     val characterLiveData = MutableLiveData<MarvelCharacter>()
     val comicsLiveData = MutableLiveData<MutableList<MarvelComic>>().apply { value = mutableListOf() }
@@ -50,7 +49,7 @@ class CharactersProfileViewModel @Inject constructor(
             }
     }
 
-    private fun getCharacter(){
+    private fun getCharacter() {
         compositeDisposable.add(interactor.getCharacter()
             .observeOn(mainScheduler)
             .subscribeOn(ioScheduler)
@@ -61,7 +60,7 @@ class CharactersProfileViewModel @Inject constructor(
             }))
     }
 
-    private fun getComics(){
+    private fun getComics() {
         compositeDisposable.add(interactor.getCharacterComics(DEFAULT_LIMIT, comicsOffset)
             .observeOn(mainScheduler)
             .subscribeOn(ioScheduler)
@@ -74,7 +73,7 @@ class CharactersProfileViewModel @Inject constructor(
             }))
     }
 
-    private fun getSeries(){
+    private fun getSeries() {
         compositeDisposable.add(interactor.getCharacterSeries(DEFAULT_LIMIT, seriesOffset)
             .observeOn(mainScheduler)
             .subscribeOn(ioScheduler)

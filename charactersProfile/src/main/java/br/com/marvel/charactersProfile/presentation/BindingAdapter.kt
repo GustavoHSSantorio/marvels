@@ -8,7 +8,7 @@ object BindingAdapter {
 
     @BindingAdapter("loadImage")
     @JvmStatic
-    fun setVisible(view: AppCompatImageView, imageUri : String?) {
+    fun setVisible(view: AppCompatImageView, imageUri: String?) {
         Picasso.get().load(imageUri).fit().centerCrop().into(view)
     }
 }

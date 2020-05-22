@@ -23,12 +23,11 @@ abstract class CharactersProfileModule {
     @ViewModelKey(CharactersProfileViewModel::class)
     abstract fun bindsCharacterListViewModel(characterListViewModel: CharactersProfileViewModel): ViewModel
 
-
     @Module
-    companion object{
+    companion object {
         @Provides
         @JvmStatic
         @CharacterId
-        fun providesCharacterId(activity : CharactersProfileActivity) = activity.intent.extras?.getInt(CHARACTER_ID_BUNDLE)
+        fun providesCharacterId(activity: CharactersProfileActivity) = activity.intent.extras?.getInt(CHARACTER_ID_BUNDLE)
     }
 }
