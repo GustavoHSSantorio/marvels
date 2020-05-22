@@ -24,13 +24,14 @@ class CharactersProfileActivity : BaseActivity() {
         binding.lifecycleOwner = this
         binding.vm = vm
 
+        setupComicsRecyclerView()
         setupSeriesRecyclerView()
         setupObservers()
     }
 
     private fun setupObservers() {
         vm.comicsLiveData.observe(this, Observer {
-
+            (binding.recyclerViewComics.adapter as ComicsListAdapter).list = it
         })
 
         vm.seriesLiveData.observe(this, Observer {
@@ -50,6 +51,22 @@ class CharactersProfileActivity : BaseActivity() {
                 val linearLayoutManager = recyclerView.layoutManager
                 if (linearLayoutManager is LinearLayoutManager)
                     vm.onSeriesLastItemVisible(linearLayoutManager.findLastVisibleItemPosition())
+            }
+        })
+    }
+
+    private fun setupComicsRecyclerView(){
+        binding.recyclerViewComics.adapter = ComicsListAdapter()
+        binding.recyclerViewComics.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(
+                @NonNull recyclerView: RecyclerView,
+                dx: Int,
+                dy: Int
+            ) {
+                super.onScrolled(recyclerView, dx, dy)
+                val linearLayoutManager = recyclerView.layoutManager
+                if (linearLayoutManager is LinearLayoutManager)
+                    vm.onComicsLastItemVisible(linearLayoutManager.findLastVisibleItemPosition())
             }
         })
     }

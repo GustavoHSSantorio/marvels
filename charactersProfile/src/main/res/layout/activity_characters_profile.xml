@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutComics">
+                app:layout_constraintBottom_toTopOf="@+id/textViewDescription">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     app:layout_constraintTop_toTopOf="@+id/textViewName"
-                    app:layout_constraintBottom_toBottomOf="@+id/textViewDate"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewName"
                     android:alpha="0.5"
                     android:background="?attr/colorPrimary"/>
 
@@ -50,34 +50,57 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/textViewDate"
-                    tools:text="Iron Man"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textViewDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/font_size_xs"
-                    app:layout_constraintVertical_bias="1"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewName"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     tools:text="Iron Man"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_stack_xs"
+                android:layout_marginStart="@dimen/spacing_stack_xs"
+                android:layout_marginEnd="@dimen/spacing_stack_xs"
+                android:textSize="@dimen/font_size_xxs"
+                android:text="@{vm.characterLiveData.description}"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutHeader"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutComics"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutComics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutHeader"
+                android:layout_marginTop="@dimen/spacing_stack_xs"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayoutSeries">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewComics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_stack_xs"
+                    android:textSize="@dimen/font_size_xs"
+                    android:text="@string/characters_profile_comics_label"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewComics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewComics"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutSeries"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_stack_xs"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayoutComics">
 
             <androidx.appcompat.widget.AppCompatTextView

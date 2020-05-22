@@ -24,6 +24,7 @@ android {
 
 dependencies {
     implementation(project(Depends.Module.resources))
+    implementation(Depends.Picasso.picasso)
 
     Depends.daggerArray.forEach { implementation(it) }
     Depends.processorDaggerArray.forEach { kapt(it) }

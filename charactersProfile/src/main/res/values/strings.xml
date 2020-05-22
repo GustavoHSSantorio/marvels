@@ -2,4 +2,5 @@
 <resources>
     <string name="title_activity_characters_profile">Perfil</string>
     <string name="characters_profile_series_label">Séries</string>
+    <string name="characters_profile_comics_label">Quadrinhos</string>
 </resources>
