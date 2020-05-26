@@ -208,7 +208,6 @@ object Depends {
             RxJava.core
     )
 
-
     val processorDaggerArray = arrayOf(
             Dagger.compiler,
             Dagger.processor
